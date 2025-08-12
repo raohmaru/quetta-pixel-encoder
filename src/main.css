@@ -1,0 +1,118 @@
+:root {
+    --ff-sans: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    --ff-monospace: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    --spacing: 1rem;
+    --img-size: 0px;
+    --img-zoom: 1;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: var(--spacing);
+    font-family: var(--ff-sans);
+    background-color: #aeb7bf;
+}
+
+h1 {
+    margin: calc(var(--spacing) * 2) 0;
+    text-align: center;
+}
+
+canvas {
+    width: calc(var(--img-size) * var(--img-zoom));
+    max-width: 100%;
+    image-rendering: pixelated; /* For modern browsers */
+    image-rendering: crisp-edges; /* Fallback for older browsers */
+
+    @media screen and (min-width: 600px) {
+        flex-direction: row;
+    }
+}
+
+output {
+    display: block;
+    width: 100%;
+    padding: calc(var(--spacing) * 0.5);
+    font-family: var(--ff-monospace);
+    background-color: #dddddd;
+
+    &:empty {
+        display: none;
+    }
+}
+
+textarea {
+    width: 100%;
+    padding: calc(var(--spacing) * 0.5);
+    font-family: var(--ff-monospace);
+    font-size: 1rem;
+}
+
+button {
+    background-color: aliceblue;
+    cursor: pointer;
+    border: 0;
+    border-radius: 4px;
+}
+
+.main {
+    display: flex;
+    column-gap: var(--spacing);
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+
+    @media screen and (min-width: 600px) {
+        flex-direction: row;
+    }
+}
+
+.config {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: var(--spacing);
+    text-align: center;
+}
+
+.toolbar {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    gap: var(--spacing);
+    margin-bottom: var(--spacing);
+
+    @media screen and (min-width: 600px) {
+        flex-direction: column;
+        justify-content: unset;
+    }
+
+    button {
+        font-size: 1rem;
+        font-weight: bold;
+    }
+}
+
+.controls {
+    @media screen and (max-width: 599px) {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing);
+    }
+
+    button {
+        padding: calc(var(--spacing) * 0.5) var(--spacing);
+    }
+}
+
+.preview {
+    text-align: center;
+}
+
+.hidden {
+    display: none;
+}

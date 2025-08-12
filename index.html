@@ -1,0 +1,37 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Namárië 2.0</title>
+    <link rel="stylesheet" href="/src/main.css">
+</head>
+
+<body>
+    <h1>Quetta Pixel Encoder 🍃</h1>
+    <main class="main">
+        <form class="config" data-cmp="Form">
+            <textarea id="message" class="textarea" cols="40" rows="10"></textarea>
+            <div class="controls">
+                <button type="submit">Generate encoded image</button>
+                <span>
+                    <input type="checkbox" id="live"><label for="live">Live preview</label>
+                </span>
+            </div>
+            <output id="output"></output>
+        </form>
+        <aside class="toolbar" data-cmp="Toolbar">
+            <button id="zoom-in" title="Increase image size (key: alt + plus)" accesskey="+">+</button>
+            <button id="zoom-out" title="Decrease image size (key: alt + minus)" accesskey="-">–</button>
+            <button id="zoom-reset" title="Reset image size (key: alt + shift + R)" accesskey="r">🔁</button>
+            <button id="export" title="Export image (key: alt + shift + E)" accesskey="e">💾</button>
+        </aside>
+        <section class="preview">
+            <canvas data-cmp="Canvas" class="hidden"></canvas>
+        </section>
+    </main>
+    <script src="/src/main.js" type="module"></script>
+    <!-- <script src="read.js" type="module"></script> -->
+</body>
+
+</html>

@@ -1,2 +1,3 @@
-# namarie2
-Farewell v2 text to color pixel encoder
+# Quetta Pixel Encoder 🍃
+
+Ahtalë quentalë ar envinyata vanima cáma. Namárië attea!
