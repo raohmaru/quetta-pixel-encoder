@@ -44,7 +44,7 @@ jobs:
       - name: Upload dist/ folder artifact
         uses: actions/upload-artifact@v4
         with:
-          name: build_files
+          name: dist
           path: ./dist
       
   deploy:
@@ -64,12 +64,7 @@ jobs:
       - name: Download build artifact
         uses: actions/download-artifact@v4
         with:
-          name: build_files
-
-      - name: Unzip build artifact as dist/ folder
-        run: |
-          rm -rf ./dist
-          unzip -q ./build_files.zip -d ./dist
+          name: dist
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
