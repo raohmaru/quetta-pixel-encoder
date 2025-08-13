@@ -41,7 +41,7 @@ jobs:
           npm ci
           npm run build
 
-      - name: Upload dist folder artifact
+      - name: Upload dist/ folder artifact
         uses: actions/upload-artifact@v4
         with:
           name: build_files
@@ -61,10 +61,15 @@ jobs:
         uses: actions/configure-pages@v5
 
 
-      - name: Download dist folder artifact
+      - name: Download build artifact
         uses: actions/download-artifact@v4
         with:
           name: build_files
+
+      - name: Unzip build artifact as dist/ folder
+        run: |
+          rm -rf ./dist
+          unzip -q build_files.zip -d ./dist
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
