@@ -35,6 +35,8 @@ jobs:
         run: |
           npm ci
           npm run build
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
   deploy:
     environment:
