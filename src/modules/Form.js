@@ -1,5 +1,6 @@
 import { store } from '../store/store';
 import Module from './Module';
+import { crc32U } from '@raohmaru/rtkjs/crc';
 
 export default class Form extends Module {
     constructor($el) {
@@ -9,6 +10,7 @@ export default class Form extends Module {
     setRefs() {
         this.$message = this.$('#message');
         this.$live = this.$('#live');
+        this.$fieldset = this.$('fieldset');
         this.bindTriggerMessageChange = this.triggerMessageChange.bind(this);
     }
 
@@ -24,6 +26,7 @@ export default class Form extends Module {
         super.init();
         const { message, live} = store.getState();
         this.$message.value = message;
+        this.messageCRC = crc32U(this.$message.value).toString(16);
         this.setLive(live);
     }
 
@@ -39,6 +42,22 @@ export default class Form extends Module {
     }
 
     triggerMessageChange() {
-        this.trigger('submit', this.$message.value);
+        const { value } = this.$message;
+        const crc = crc32U(value);
+        // Trigger only if input text has changed.
+        // Use CRC32 for memory performance to avoid comparing large chunks of text.
+        if (crc !== this.messageCRC) {
+            this.trigger('submit', value);
+            this.messageCRC = crc;
+        }
+    }
+
+    disable() {
+        this.$fieldset.setAttribute('disabled', '');
+    }
+
+    enable() {
+        this.$fieldset.removeAttribute('disabled');
+        this.$message.focus();
     }
 }

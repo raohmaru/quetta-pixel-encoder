@@ -11,21 +11,25 @@
     <h1>🍃 Quetta Pixel Encoder <span class="mirror">🍃</span></h1>
     <h2>Turn a tale into a fine painting</h2>
     <main class="main">
-        <form class="config" data-cmp="Form">
-            <textarea id="message" class="textarea" cols="40" rows="10"></textarea>
-            <div class="controls">
-                <button type="submit">Encode</button>
-                <span>
-                    <input type="checkbox" id="live"><label for="live">Live preview</label>
-                </span>
-            </div>
-            <output id="output"></output>
+        <form data-cmp="Form">
+            <fieldset class="config">
+                <textarea id="message" class="textarea" cols="40" rows="10"></textarea>
+                <div class="controls">
+                    <button type="submit">Encode</button>
+                    <span>
+                        <input type="checkbox" id="live"><label for="live">Live preview</label>
+                    </span>
+                </div>
+                <output id="output"></output>
+            </fieldset>
         </form>
-        <aside class="toolbar" data-cmp="Toolbar">
-            <button id="zoom-in" title="Increase image size (key: alt + plus)" accesskey="+">+</button>
-            <button id="zoom-out" title="Decrease image size (key: alt + minus)" accesskey="-">–</button>
-            <button id="zoom-reset" title="Reset image size (key: alt + shift + R)" accesskey="r">🔁</button>
-            <button id="export" title="Save image (key: alt + shift + E)" accesskey="e">💾</button>
+        <aside data-cmp="Toolbar">
+            <fieldset class="toolbar">
+                <button id="zoom-in" title="Increase image size (key: alt + plus)" accesskey="+">+</button>
+                <button id="zoom-out" title="Decrease image size (key: alt + minus)" accesskey="-">–</button>
+                <button id="zoom-reset" title="Reset image size (key: alt + shift + R)" accesskey="r">🔁</button>
+                <button id="export" title="Save image (key: alt + shift + E)" accesskey="e">💾</button>
+            </fieldset>
         </aside>
         <section class="preview">
             <canvas data-cmp="Canvas" class="hidden"></canvas>

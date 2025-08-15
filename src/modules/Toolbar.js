@@ -11,6 +11,7 @@ export default class Toolbar extends Module {
         this.$zoomOut = this.$('#zoom-out');
         this.$zoomReset = this.$('#zoom-reset');
         this.$export = this.$('#export');
+        this.$fieldset = this.$('fieldset');
     }
 
     addListeners() {
@@ -28,5 +29,13 @@ export default class Toolbar extends Module {
         let zoom = store.getState().zoom;
         zoom = Math.max(1, zoom + amount);
         store.dispatch({ type: 'zoom/change', value: zoom });
+    }
+
+    disable() {
+        this.$fieldset.setAttribute('disabled', '');
+    }
+
+    enable() {
+        this.$fieldset.removeAttribute('disabled');
     }
 }

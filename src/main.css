@@ -1,3 +1,9 @@
+@keyframes spinner {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 :root {
     --ff-sans: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     --ff-monospace: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -63,6 +69,11 @@ output {
     }
 }
 
+fieldset {
+    padding: 0;
+    border: 0;
+}
+
 textarea {
     width: 100%;
     padding: calc(var(--spacing) * 0.5);
@@ -78,7 +89,7 @@ button {
     border-radius: 4px;
     transition: background-color 0.15s linear;
 
-    &:hover {
+    &:not(:disabled):hover {
         background-color: rgb(189, 210, 228);
     }
 }
@@ -139,6 +150,24 @@ button {
     button {
         font-size: 1rem;
         padding: calc(var(--spacing) * 0.5) var(--spacing);
+
+        &:disabled {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            color: transparent;
+
+            &::after {
+                content: '';
+                position: absolute;
+                display: block;
+                width: 15px;
+                height: 15px;
+                border: 4px dotted #2966d6;
+                border-radius: 50%;
+                animation: spinner 3s linear infinite;
+            }
+        }
     }
 }
 
