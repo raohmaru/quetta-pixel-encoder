@@ -29,6 +29,31 @@ export default class Module {
         if (!this.signals.has(event)) {
             this.signals.set(event, new Signal());
         }
-        this.signals.get(event).then(callback);
+        const signal = this.signals.get(event);
+        signal.then(callback);
+        if (this._queue?.length) {
+            this._queue = this._queue.filter(([queuedEvent, payload]) => {
+                if (queuedEvent === event) {
+                    signal.emit(...payload);
+                    return false;
+                }
+                return true;
+            });
+        }
+    }
+
+    trigger(event, payload) {
+        if (this.signals) {
+            this.signals.get(event)?.emit(payload);
+        } else {
+            this.queue(event, payload);
+        }
+    }
+
+    queue(event, ...payload) {
+        if (!this._queue) {
+            this._queue = [];
+        }
+        this._queue.push([event, payload]);
     }
 }

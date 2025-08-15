@@ -39,6 +39,6 @@ export default class Form extends Module {
     }
 
     triggerMessageChange() {
-        this.signals?.get('submit')?.emit(this.$message.value)
+        this.trigger('submit', this.$message.value);
     }
 }

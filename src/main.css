@@ -4,6 +4,7 @@
     --spacing: 1rem;
     --img-size: 0px;
     --img-zoom: 1;
+    --btn-bg-color: aliceblue;
 }
 
 * {
@@ -13,12 +14,30 @@
 body {
     margin: var(--spacing);
     font-family: var(--ff-sans);
+    text-align: center;
     background-color: #aeb7bf;
 }
 
 h1 {
-    margin: calc(var(--spacing) * 2) 0;
+    font-size: 1.5rem;
+    margin: calc(var(--spacing) * 2) 0 var(--spacing);
     text-align: center;
+
+    @media screen and (min-width: 600px) {
+        font-size: revert;
+    }
+}
+
+h2 {
+    font-size: 1rem;
+    font-weight: normal;
+    font-style: italic;
+    margin: var(--spacing) 0 calc(var(--spacing) * 3);
+    text-align: center;
+
+    @media screen and (min-width: 600px) {
+        font-size: 1.5rem;
+    }
 }
 
 canvas {
@@ -52,10 +71,16 @@ textarea {
 }
 
 button {
-    background-color: aliceblue;
+    font-weight: bold;
+    background-color: var(--btn-bg-color);
     cursor: pointer;
-    border: 0;
+    border: 1px solid var(--btn-bg-color);
     border-radius: 4px;
+    transition: background-color 0.15s linear;
+
+    &:hover {
+        background-color: rgb(189, 210, 228);
+    }
 }
 
 .main {
@@ -91,20 +116,28 @@ button {
     }
 
     button {
-        font-size: 1rem;
-        font-weight: bold;
+        min-width: 45px;
+        font-size: 1.5rem;
+
+        @media screen and (min-width: 600px) {
+            min-width: 0;
+            font-size: 1rem;
+        }
     }
 }
 
 .controls {
-    @media screen and (max-width: 599px) {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        gap: var(--spacing);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing);
+
+    @media screen and (min-width: 600px) {
+        align-items: center;
     }
 
     button {
+        font-size: 1rem;
         padding: calc(var(--spacing) * 0.5) var(--spacing);
     }
 }
@@ -115,4 +148,9 @@ button {
 
 .hidden {
     display: none;
+}
+
+.mirror {
+    display: inline-block;
+    transform: scaleX(-1);
 }

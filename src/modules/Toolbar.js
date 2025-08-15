@@ -17,12 +17,11 @@ export default class Toolbar extends Module {
         this.$zoomIn.addEventListener('click', () => this.setZoom(1));
         this.$zoomOut.addEventListener('click', () => this.setZoom(-1));
         this.$zoomReset.addEventListener('click', () => this.setZoom(-Infinity));
-        this.$export.addEventListener('click', () => this.signals.get('export')?.emit());
+        this.$export.addEventListener('click', () => this.trigger('export'));
     }
 
     init() {
         super.init();
-        this.signals = new Map();
     }
 
     setZoom(amount = 0) {

@@ -60,15 +60,11 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-
       - name: Download build artifact
         uses: actions/download-artifact@v4
         with:
           name: dist
           path: ./dist
-
-      - name: List contents after extracting artifact
-        run: ls -R
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
