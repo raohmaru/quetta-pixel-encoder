@@ -26,10 +26,11 @@ body {
 
 h1 {
     font-size: 1.5rem;
-    margin: calc(var(--spacing) * 2) 0 var(--spacing);
+    margin-block: calc(var(--spacing)) calc(var(--spacing) * 0.5);
     text-align: center;
 
     @media screen and (min-width: 600px) {
+        margin-top: calc(var(--spacing) * 2);
         font-size: revert;
     }
 }
@@ -38,11 +39,12 @@ h2 {
     font-size: 1rem;
     font-weight: normal;
     font-style: italic;
-    margin: var(--spacing) 0 calc(var(--spacing) * 3);
+    margin-block: calc(var(--spacing) * 0.5) calc(var(--spacing) * 1.5);
     text-align: center;
 
     @media screen and (min-width: 600px) {
         font-size: 1.5rem;
+        margin-block: var(--spacing) calc(var(--spacing) * 3);
     }
 }
 
@@ -67,6 +69,10 @@ output {
     &:empty {
         display: none;
     }
+
+    @media screen and (max-width: 599px) {
+        display: none;
+    }
 }
 
 fieldset {
@@ -79,18 +85,33 @@ textarea {
     padding: calc(var(--spacing) * 0.5);
     font-family: var(--ff-monospace);
     font-size: 1rem;
+
+    @media screen and (max-width: 599px) {
+        /* height: 130px; */
+    }
 }
 
 button {
     font-weight: bold;
     background-color: var(--btn-bg-color);
+    border: 1px solid var(--btn-bg-color);
+    border-radius: 4px;
     cursor: pointer;
+    transition: background-color 0.15s linear;
+
+    &:not(:disabled):hover {
+        background-color: rgb(189, 210, 228);
+    }
+}
+
+select {
+    padding: calc(var(--spacing) * 0.25);
     border: 1px solid var(--btn-bg-color);
     border-radius: 4px;
     transition: background-color 0.15s linear;
 
     &:not(:disabled):hover {
-        background-color: rgb(189, 210, 228);
+        background-color: var(--btn-bg-color);
     }
 }
 
@@ -149,7 +170,7 @@ button {
 
     button {
         font-size: 1rem;
-        padding: calc(var(--spacing) * 0.5) var(--spacing);
+        padding: calc(var(--spacing) * 0.5) calc(var(--spacing) * 2);
 
         &:disabled {
             display: inline-flex;
@@ -168,6 +189,20 @@ button {
                 animation: spinner 3s linear infinite;
             }
         }
+    }
+}
+
+.subcontrols {
+    @media screen and (min-width: 600px) {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+}
+
+.live {
+    @media screen and (max-width: 599px) {
+        display: none;
     }
 }
 

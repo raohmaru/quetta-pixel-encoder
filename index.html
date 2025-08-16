@@ -16,9 +16,18 @@
                 <textarea id="message" class="textarea" cols="40" rows="10"></textarea>
                 <div class="controls">
                     <button type="submit">Encode</button>
-                    <span>
-                        <input type="checkbox" id="live"><label for="live">Live preview</label>
-                    </span>
+                    <div class="subcontrols">
+                        <span class="live">
+                            <input type="checkbox" id="live"><label for="live">Live preview</label>
+                        </span>
+                        <select id="dir">
+                            <option>Writing direction</option>
+                            <option value="ltr">Left to right</option>
+                            <option value="rtl">Right to left</option>
+                            <option value="vltr">Top to bottom, left to right</option>
+                            <option value="vrtl">Top to bottom, right to left</option>
+                        </select>
+                    </div>
                 </div>
                 <output id="output"></output>
             </fieldset>

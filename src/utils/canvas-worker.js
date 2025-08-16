@@ -48,7 +48,7 @@ function generateImage(message, cellSize) {
                 imageData.data[1] = g;
                 imageData.data[2] = b;
                 // Draw the pixel on the canvas
-                ctx.putImageData(imageData, i * cellSize, j * cellSize);
+                ctx.putImageData(imageData, j * cellSize, i * cellSize);
             } else {
                 ctx.fillStyle = `rgb(${r}, ${g}, ${b})`;
                 ctx.fillRect(i * cellSize, j * cellSize, cellSize, cellSize);

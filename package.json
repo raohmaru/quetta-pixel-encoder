@@ -4,6 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:public": "vite --host",
     "build": "vite build --base=/quetta-pixel-encoder/",
     "preview": "vite preview",
     "lint": "eslint",

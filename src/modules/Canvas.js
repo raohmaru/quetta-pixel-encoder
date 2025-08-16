@@ -15,10 +15,25 @@ export default class Canvas extends Module {
         this.offsetContext = this.$offsetCanvas.getContext('2d');
     }
 
-    drawImage(imageBitmap) {
-        this.$el.width = imageBitmap.width;
-        this.$el.height = imageBitmap.height;
+    drawImage(imageBitmap, dir = 'ltr') {
+        const { width, height } = imageBitmap;
+        this.$el.width = width;
+        this.$el.height = height;
+        this.context.save();
+        if (dir === 'rtl') {
+            this.context.translate(width, 0);
+            this.context.scale(-1, 1);
+        }
+        else if (dir === 'vltr') {
+            this.context.rotate(Math.PI / 2);
+            this.context.scale(1, -1);
+        }
+        else if (dir === 'vrtl') {
+            this.context.translate(width, 0);
+            this.context.rotate(Math.PI / 2);
+        }
         this.context.drawImage(imageBitmap, 0, 0);
+        this.context.restore();
     }
 
     export(message, scale = 1) {

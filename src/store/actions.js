@@ -38,11 +38,21 @@ export function liveReducer(live = false, action) {
     }
 }
 
+export function dirReducer(dir = 'ltr', action) {
+    switch (action.type) {
+        case 'dir/change':
+            return action.value;
+        default:
+            return dir;
+    }
+}
+
 const rootReducer = combineReducers({
     message: messageReducer,
     zoom: zoomReducer,
     size: sizeReducer,
-    live: liveReducer
+    live: liveReducer,
+    dir: dirReducer
 });
 
 export { rootReducer };
