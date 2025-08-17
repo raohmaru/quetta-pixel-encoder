@@ -17,8 +17,14 @@
     box-sizing: border-box;
 }
 
+html,
 body {
-    margin: var(--spacing);
+    height: 100dvh;
+}
+
+body {
+    margin: 0;
+    padding: var(--spacing);
     font-family: var(--ff-sans);
     text-align: center;
     background-color: #aeb7bf;
@@ -31,11 +37,10 @@ header {
 
 h1 {
     font-size: 1.5rem;
-    margin-block: calc(var(--spacing) * 1.5) calc(var(--spacing) * 0.5);
+    margin-block: var(--spacing) calc(var(--spacing) * 0.5);
     text-align: center;
 
     @media screen and (min-width: 600px) {
-        margin-top: calc(var(--spacing) * 2);
         font-size: revert;
     }
 }
@@ -44,7 +49,7 @@ h2 {
     font-size: 1rem;
     font-weight: normal;
     font-style: italic;
-    margin-block: calc(var(--spacing) * 0.5) calc(var(--spacing) * 1.5);
+    margin-block: calc(var(--spacing) * 0.5) calc(var(--spacing) * 2);
     text-align: center;
 
     @media screen and (min-width: 600px) {
