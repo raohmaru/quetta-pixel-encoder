@@ -2,6 +2,7 @@ import { crc32U } from '@raohmaru/rtkjs/crc';
 import { store } from '../store/store';
 import { isTouchDevice } from '../utils/media';
 import Module from './Module';
+import topicBroker from '../store/topic-broker';
 
 export default class Form extends Module {
     constructor($el) {
@@ -23,11 +24,13 @@ export default class Form extends Module {
         });
         this.$live.addEventListener('change', () => this.setLive(this.$live.checked));
         this.$dir.addEventListener('change', () => this.changeWritingDirection(this.$dir.value));
+        topicBroker.subscribe('ui-enable', this.enable.bind(this));
+        topicBroker.subscribe('ui-disable', this.disable.bind(this));
     }
 
     init() {
         super.init();
-        const { message, live, dir } = store.getState();
+        const { tale: {message}, live, dir } = store.getState();
         this.$message.value = message;
         this.$dir.value = dir;
         this.messageCRC = crc32U(this.$message.value).toString(16);
@@ -64,12 +67,8 @@ export default class Form extends Module {
         store.dispatch({ type: 'dir/change', value: dir });
     }
 
-    disable() {
-        this.$fieldset.setAttribute('disabled', '');
-    }
-
     enable() {
-        this.$fieldset.removeAttribute('disabled');
+        super.enable();
         if (this.$live.checked && !isTouchDevice()) {
             this.$message.focus();
         }

@@ -16,6 +16,6 @@
     "vite": "^7.0.4"
   },
   "dependencies": {
-    "@raohmaru/rtkjs": "^1.1.0"
+    "@raohmaru/rtkjs": "^1.2.0"
   }
 }

@@ -56,4 +56,12 @@ export default class Module {
         }
         this._queue.push([event, payload]);
     }
+
+    disable() {
+        this.$fieldset.setAttribute('disabled', '');
+    }
+
+    enable() {
+        this.$fieldset.removeAttribute('disabled');
+    }
 }

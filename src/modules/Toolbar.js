@@ -1,5 +1,6 @@
 import { store } from '../store/store';
 import Module from './Module';
+import topicBroker from '../store/topic-broker';
 
 export default class Toolbar extends Module {
     constructor($el) {
@@ -19,6 +20,8 @@ export default class Toolbar extends Module {
         this.$zoomOut.addEventListener('click', () => this.setZoom(-1));
         this.$zoomReset.addEventListener('click', () => this.setZoom(-Infinity));
         this.$export.addEventListener('click', () => this.trigger('export'));
+        topicBroker.subscribe('ui-enable', this.enable.bind(this));
+        topicBroker.subscribe('ui-disable', this.disable.bind(this));
     }
 
     init() {
@@ -29,13 +32,5 @@ export default class Toolbar extends Module {
         let zoom = store.getState().zoom;
         zoom = Math.max(1, zoom + amount);
         store.dispatch({ type: 'zoom/change', value: zoom });
-    }
-
-    disable() {
-        this.$fieldset.setAttribute('disabled', '');
-    }
-
-    enable() {
-        this.$fieldset.removeAttribute('disabled');
     }
 }
