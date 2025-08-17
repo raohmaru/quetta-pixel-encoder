@@ -22,11 +22,16 @@ body {
     font-family: var(--ff-sans);
     text-align: center;
     background-color: #aeb7bf;
+    background-image: radial-gradient(at 80% 80%, #84c2ff, transparent);
+}
+
+header {
+    text-shadow: 1px 1px 3px white;
 }
 
 h1 {
     font-size: 1.5rem;
-    margin-block: calc(var(--spacing)) calc(var(--spacing) * 0.5);
+    margin-block: calc(var(--spacing) * 1.5) calc(var(--spacing) * 0.5);
     text-align: center;
 
     @media screen and (min-width: 600px) {
